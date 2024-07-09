@@ -50,7 +50,7 @@ def train(args, params):
 
     model = network.build_network(**params)
 
-    stopping = keras.callbacks.EarlyStopping(patience=8)
+    stopping = keras.callbacks.EarlyStopping(patience=8, verbose=1)
 
     reduce_lr = keras.callbacks.ReduceLROnPlateau(
         factor=0.1,
