@@ -82,6 +82,8 @@ def train(args, params):
             epochs=MAX_EPOCHS,
             validation_data=(dev_x, dev_y),
             callbacks=[checkpointer, reduce_lr, stopping])
+    #finally save our model for later use
+    model.save('cinc2017-model.keras')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
