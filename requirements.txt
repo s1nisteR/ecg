@@ -3,4 +3,4 @@ Keras
 tqdm
 unittest2
 scipy
-tensorflow-gpu
+tensorflow
