@@ -1,13 +1,6 @@
 #!/bin/bash
 
-if [ -z "$TF" ]
-then
-    TF=tensorflow
-else
-    TF=tensorflow-gpu
-fi
+cd examples/cinc17
 
-
-pip install -r requirements.txt
-pip install --upgrade $TF
+./setup.sh
 
