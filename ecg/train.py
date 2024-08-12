@@ -50,7 +50,7 @@ def train(args, params):
 
     model = network.build_network(**params)
 
-    stopping = keras.callbacks.EarlyStopping(patience=8, verbose=1)
+    #stopping = keras.callbacks.EarlyStopping(patience=8, verbose=1)
 
     reduce_lr = keras.callbacks.ReduceLROnPlateau(
         factor=0.1,
@@ -72,7 +72,7 @@ def train(args, params):
             epochs=MAX_EPOCHS,
             validation_data=dev_gen,
             validation_steps=int(len(dev[0]) / batch_size),
-            callbacks=[checkpointer, reduce_lr, stopping])
+            callbacks=[checkpointer, reduce_lr])
     else:
         train_x, train_y = preproc.process(*train)
         dev_x, dev_y = preproc.process(*dev)
@@ -81,7 +81,7 @@ def train(args, params):
             batch_size=batch_size,
             epochs=MAX_EPOCHS,
             validation_data=(dev_x, dev_y),
-            callbacks=[checkpointer, reduce_lr, stopping])
+            callbacks=[checkpointer, reduce_lr])
     #finally save our model for later use
     model.save('cinc2017-model.keras')
 
